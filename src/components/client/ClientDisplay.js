@@ -45,10 +45,14 @@ const columns = [
   {
     title: "操作",
     key: "action",
-    render: (text, record) => (
+    render: () => (
       <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
+        <a href="#" alt="none">
+          详情
+        </a>
+        <a href="#" alt="none">
+          更多
+        </a>
       </Space>
     ),
   },

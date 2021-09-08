@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
-import ClientInfo from "./components/client/clientInfo";
+import ClientInfo from "./components/client/";
+import OrderInfo from "./components/order/";
+import ProductInfo from "./components/product";
+import InventoryInfo from "./components/inventory";
+import UserInfo from "./components/staff/user";
 import { Layout, Menu, Dropdown } from "antd";
 import {
   PieChartOutlined,
@@ -15,9 +19,21 @@ import {
 
 function Main() {
   const [collapsed, setCollapsed] = useState(false);
-  const [page, setPage] = useState(false);
+  const [page, setPage] = useState("Dashboard");
   const { Header, Content, Footer, Sider } = Layout;
   const { SubMenu } = Menu;
+
+  const toggle = () => {
+    setCollapsed(!collapsed);
+  };
+
+  const handlePageJump = (e) => {
+    if (e.key === "2") setPage(<ClientInfo />);
+    if (e.key === "4") setPage(<OrderInfo />);
+    if (e.key === "6") setPage(<ProductInfo />);
+    if (e.key === "10") setPage(<InventoryInfo />);
+    if (e.key === "19") setPage(<UserInfo />);
+  };
 
   const userDropdownMenu = (
     <Menu>
@@ -30,10 +46,6 @@ function Main() {
     </Menu>
   );
 
-  const toggle = () => {
-    setCollapsed(!collapsed);
-  };
-
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -44,23 +56,31 @@ function Main() {
             首页
           </Menu.Item>
           <SubMenu key="sub1" icon={<UserOutlined />} title="客户管理">
-            <Menu.Item key="2">客户信息</Menu.Item>
+            <Menu.Item key="2" onClick={handlePageJump}>
+              客户信息
+            </Menu.Item>
             <Menu.Item key="3">来往统计</Menu.Item>
           </SubMenu>
           <SubMenu key="sub2" icon={<TeamOutlined />} title="订单管理">
-            <Menu.Item key="4">订单信息</Menu.Item>
+            <Menu.Item key="4" onClick={handlePageJump}>
+              订单信息
+            </Menu.Item>
             <Menu.Item key="5">来往统计</Menu.Item>
           </SubMenu>
 
           <SubMenu key="sub3" icon={<TeamOutlined />} title="产品管理">
-            <Menu.Item key="6">产品详情</Menu.Item>
+            <Menu.Item key="6" onClick={handlePageJump}>
+              产品详情
+            </Menu.Item>
             <Menu.Item key="7">分类管理</Menu.Item>
             <Menu.Item key="8">材料管理</Menu.Item>
             <Menu.Item key="9">产品统计</Menu.Item>
           </SubMenu>
 
           <SubMenu key="sub4" icon={<TeamOutlined />} title="库存管理">
-            <Menu.Item key="10">库存管理</Menu.Item>
+            <Menu.Item key="10" onClick={handlePageJump}>
+              库存管理
+            </Menu.Item>
             <Menu.Item key="11">进货统计</Menu.Item>
           </SubMenu>
 
@@ -78,7 +98,9 @@ function Main() {
           </SubMenu>
 
           <SubMenu key="sub7" icon={<TeamOutlined />} title="系统管理">
-            <Menu.Item key="19">用户管理</Menu.Item>
+            <Menu.Item key="19" onClick={handlePageJump}>
+              用户管理
+            </Menu.Item>
             <Menu.Item key="20">角色管理</Menu.Item>
             <Menu.Item key="21">部门管理</Menu.Item>
             <Menu.Item key="22">职务设置</Menu.Item>
@@ -127,7 +149,7 @@ function Main() {
             minHeight: 280,
           }}
         >
-          <ClientInfo />
+          {page}
         </Content>
 
         <Footer style={{ textAlign: "center" }}>
