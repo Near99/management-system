@@ -1,19 +1,19 @@
 import React from "react";
-import SearchBar from "../../templates/SearchBar";
-import ActionBar from "../../templates/ActionBar";
-import UserInfoDisplay from "./userDisplay";
+import SearchBar from "./SearchBar.jsx";
+import ActionBar from "./ActionBar.jsx";
+import OrderInfoDisplay from "./OrderDisplay.jsx";
 
-const UserInfo = () => {
+const OrderInfo = () => {
   const formInfo = [
     {
-      name: "account",
-      label: "帐号",
+      name: "orderNumber",
+      label: "订单编号",
       required: false,
       dropdown: false,
     },
     {
-      name: "gender",
-      label: "性别",
+      name: "clientInfo",
+      label: "客户信息",
       required: false,
       dropdown: true,
     },
@@ -21,16 +21,16 @@ const UserInfo = () => {
 
   const dropdownItems = [
     {
-      optionValue: "male",
-      displayValue: "男",
+      optionValue: "zhangxiaofeng",
+      displayValue: "张小丰",
     },
     {
-      optionValue: "female",
-      displayValue: "女",
+      optionValue: "lidi",
+      displayValue: "李帝",
     },
   ];
 
-  const buttonInfo = ["添加用户", "导入", "回收站"];
+  const buttonInfo = ["新增订单", "导出", "导入", "回收站"];
 
   const drawerFormInfo = {
     drawerTitle: "新增客户",
@@ -96,14 +96,25 @@ const UserInfo = () => {
         displayValue: "女",
       },
     ],
+    nationality: [
+      {
+        optionValue: "us",
+        displayValue: "美国",
+      },
+      {
+        optionValue: "cn",
+        displayValue: "中国",
+      },
+    ],
   };
+
   return (
     <div>
       <SearchBar formInfo={formInfo} dropdownItems={dropdownItems} />
       <ActionBar buttonInfo={buttonInfo} drawerFormInfo={drawerFormInfo} />
-      <UserInfoDisplay />
+      <OrderInfoDisplay />
     </div>
   );
 };
 
-export default UserInfo;
+export default OrderInfo;

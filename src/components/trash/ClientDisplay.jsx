@@ -45,16 +45,16 @@ const columns = [
   {
     title: "操作",
     key: "action",
-    render: () => (
-      <Space size="middle">
-        <a href="#" alt="none">
-          详情
-        </a>
-        <a href="#" alt="none">
-          更多
-        </a>
-      </Space>
-    ),
+    // render: () => (
+    //   <Space size="middle">
+    //     <a href="#" alt="none">
+    //       详情
+    //     </a>
+    //     <a href="#" alt="none">
+    //       更多
+    //     </a>
+    //   </Space>
+    // ),
   },
 ];
 

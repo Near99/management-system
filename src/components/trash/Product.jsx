@@ -1,6 +1,6 @@
 import React from "react";
-import SearchBar from "../templates/SearchBar";
-import ProductInfoDisplay from "./ProductDisplay";
+import SearchBar from "./SearchBar.jsx";
+import ProductInfoDisplay from "./ProductDisplay.jsx";
 // import ActionBar from "../templates/ActionBar";
 
 const ProductInfo = () => {

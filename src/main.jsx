@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import "./App.css";
-import ClientInfo from "./components/client/";
-import OrderInfo from "./components/order/";
-import ProductInfo from "./components/product";
-import InventoryInfo from "./components/inventory";
-import UserInfo from "./components/staff/user";
+import { Link } from "react-router-dom";
 import { Layout, Menu, Dropdown } from "antd";
 import {
   PieChartOutlined,
-  TeamOutlined,
   UserOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -16,23 +10,15 @@ import {
   BellFilled,
   ExportOutlined,
 } from "@ant-design/icons";
+import "./App.css";
 
-function Main() {
+function Main(props) {
   const [collapsed, setCollapsed] = useState(false);
-  const [page, setPage] = useState("Dashboard");
   const { Header, Content, Footer, Sider } = Layout;
   const { SubMenu } = Menu;
 
   const toggle = () => {
     setCollapsed(!collapsed);
-  };
-
-  const handlePageJump = (e) => {
-    if (e.key === "2") setPage(<ClientInfo />);
-    if (e.key === "4") setPage(<OrderInfo />);
-    if (e.key === "6") setPage(<ProductInfo />);
-    if (e.key === "10") setPage(<InventoryInfo />);
-    if (e.key === "19") setPage(<UserInfo />);
   };
 
   const userDropdownMenu = (
@@ -53,38 +39,40 @@ function Main() {
 
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
           <Menu.Item key="1" icon={<PieChartOutlined />}>
-            首页
+            <Link to="/">首页</Link>
           </Menu.Item>
           <SubMenu key="sub1" icon={<UserOutlined />} title="客户管理">
-            <Menu.Item key="2" onClick={handlePageJump}>
-              客户信息
+            <Menu.Item key="2">
+              <Link to="/client">客户信息</Link>
             </Menu.Item>
             <Menu.Item key="3">来往统计</Menu.Item>
           </SubMenu>
-          <SubMenu key="sub2" icon={<TeamOutlined />} title="订单管理">
-            <Menu.Item key="4" onClick={handlePageJump}>
-              订单信息
+          <SubMenu key="sub2" icon={<UserOutlined />} title="订单管理">
+            <Menu.Item key="4">
+              <Link to="/order">订单详情</Link>
             </Menu.Item>
             <Menu.Item key="5">来往统计</Menu.Item>
           </SubMenu>
 
-          <SubMenu key="sub3" icon={<TeamOutlined />} title="产品管理">
-            <Menu.Item key="6" onClick={handlePageJump}>
-              产品详情
+          <SubMenu key="sub3" icon={<UserOutlined />} title="产品管理">
+            <Menu.Item key="6">
+              <Link to="/product">产品详情</Link>
             </Menu.Item>
             <Menu.Item key="7">分类管理</Menu.Item>
             <Menu.Item key="8">材料管理</Menu.Item>
             <Menu.Item key="9">产品统计</Menu.Item>
           </SubMenu>
 
-          <SubMenu key="sub4" icon={<TeamOutlined />} title="库存管理">
-            <Menu.Item key="10" onClick={handlePageJump}>
-              库存管理
+          <SubMenu key="sub4" icon={<UserOutlined />} title="库存管理">
+            <Menu.Item key="10">
+              <Link to="/inventory">库存情况</Link>
             </Menu.Item>
-            <Menu.Item key="11">进货统计</Menu.Item>
+            <Menu.Item key="11">
+              <Link to="/procurement">采购管理</Link>
+            </Menu.Item>
           </SubMenu>
 
-          <SubMenu key="sub5" icon={<TeamOutlined />} title="成本管理">
+          <SubMenu key="sub5" icon={<UserOutlined />} title="成本管理">
             <Menu.Item key="12">成本管理</Menu.Item>
             <Menu.Item key="13">缴费记录</Menu.Item>
             <Menu.Item key="14">工资管理</Menu.Item>
@@ -92,14 +80,14 @@ function Main() {
             <Menu.Item key="16">统计报表</Menu.Item>
           </SubMenu>
 
-          <SubMenu key="sub6" icon={<TeamOutlined />} title="人员管理">
+          <SubMenu key="sub6" icon={<UserOutlined />} title="人员管理">
             <Menu.Item key="17">人员管理</Menu.Item>
             <Menu.Item key="18">人员管理</Menu.Item>
           </SubMenu>
 
-          <SubMenu key="sub7" icon={<TeamOutlined />} title="系统管理">
-            <Menu.Item key="19" onClick={handlePageJump}>
-              用户管理
+          <SubMenu key="sub7" icon={<UserOutlined />} title="系统管理">
+            <Menu.Item key="19">
+              <Link to="/user">用户管理</Link>
             </Menu.Item>
             <Menu.Item key="20">角色管理</Menu.Item>
             <Menu.Item key="21">部门管理</Menu.Item>
@@ -149,7 +137,7 @@ function Main() {
             minHeight: 280,
           }}
         >
-          {page}
+          {props.childComponent}
         </Content>
 
         <Footer style={{ textAlign: "center" }}>

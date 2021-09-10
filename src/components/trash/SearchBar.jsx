@@ -50,7 +50,7 @@ const SearchBar = ({ formInfo, dropdownItems }) => {
         ]}
       >
         <Select
-          placeholder="Select a option and change input text above"
+          // placeholder="Select a option and change input text above"
           allowClear
         >
           {dropdown}

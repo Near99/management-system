@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DrawerForm from "./Drawer";
+import DrawerForm from "../templates/Drawer.jsx";
 import { Button, Menu, Dropdown } from "antd";
 
 const actionDropdownMenu = (
@@ -36,7 +36,7 @@ const ActionBar = ({ buttonInfo, drawerFormInfo }) => {
   };
 
   const buttons = buttonInfo.map((item, index) => {
-    if (index === 0) {
+    if (!index) {
       return (
         <Button key={index} onClick={showDrawer} type="primary">
           {item}

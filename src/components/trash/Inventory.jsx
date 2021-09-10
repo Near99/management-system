@@ -1,6 +1,6 @@
 import React from "react";
-import SearchBar from "../templates/SearchBar";
-import InventoryInfoDisplay from "./InventoryDisplay";
+import SearchBar from "./SearchBar.jsx";
+import InventoryInfoDisplay from "./InventoryDisplay.jsx";
 
 const InventoryInfo = () => {
   const formInfo = [
