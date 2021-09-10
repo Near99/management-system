@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DrawerForm from "./Drawer";
-import { Form, Input, Button, Select, Menu, Dropdown, Table } from "antd";
+import { Link } from "react-router-dom";
+import { Form, Input, Button, Select, Menu, Dropdown, Table, Tabs } from "antd";
 
 const SearchBar = ({ formInfo, dropdownItems }) => {
   const { Option } = Select;
@@ -72,6 +73,21 @@ const SearchBar = ({ formInfo, dropdownItems }) => {
         </Button>
       </Form.Item>
     </Form>
+  );
+};
+
+const NavTabs = ({ navBarTitle }) => {
+  const { TabPane } = Tabs;
+  const toHome = (
+    <Link to="/" style={{ color: "#000000" }}>
+      首页
+    </Link>
+  );
+  return (
+    <Tabs defaultActiveKey="2">
+      <TabPane tab={toHome} key="1" />
+      <TabPane tab={navBarTitle} key="2" />
+    </Tabs>
   );
 };
 
@@ -169,10 +185,12 @@ function Content(props) {
     buttonInfo,
     drawerFormInfo,
     tableData,
+    navBarTitle,
   } = props.data;
 
   return (
     <>
+      <NavTabs navBarTitle={navBarTitle} />
       <SearchBar
         formInfo={searchBarFormInfo}
         dropdownItems={searchBarDropdownItems}

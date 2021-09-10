@@ -196,6 +196,7 @@ const client = {
       },
     ],
   },
+  navBarTitle: "客户管理",
 };
 
 const order = {
@@ -348,16 +349,14 @@ const order = {
         title: "操作",
         key: "action",
         render: () => (
-          //   <Space size="middle">
-          <div>
+          <Space size="middle">
             <a href="/" alt="none">
               详情
             </a>
             <a href="/" alt="none">
               更多
             </a>
-          </div>
-          //   </Space>
+          </Space>
         ),
       },
     ],
@@ -374,116 +373,9 @@ const order = {
         profit: "99999",
         status: "待确认",
       },
-      {
-        key: "2",
-        orderNumber: "20210317-DT001",
-        companyName: "John Brown",
-        clientName: "北京擎科生物科技有限公司",
-        orderDate: "2021.03.12",
-        shippingDate: "2021.03.12",
-        quantity: "7",
-        mCost: "1123.56",
-        profit: "99999",
-        status: "待确认",
-      },
-      {
-        key: "3",
-        orderNumber: "20210317-DT001",
-        companyName: "John Brown",
-        clientName: "北京擎科生物科技有限公司",
-        orderDate: "2021.03.12",
-        shippingDate: "2021.03.12",
-        quantity: "7",
-        mCost: "1123.56",
-        profit: "99999",
-        status: "待确认",
-      },
-      {
-        key: "4",
-        orderNumber: "20210317-DT001",
-        companyName: "John Brown",
-        clientName: "北京擎科生物科技有限公司",
-        orderDate: "2021.03.12",
-        shippingDate: "2021.03.12",
-        quantity: "7",
-        mCost: "1123.56",
-        profit: "99999",
-        status: "待确认",
-      },
-      {
-        key: "5",
-        orderNumber: "20210317-DT001",
-        companyName: "John Brown",
-        clientName: "北京擎科生物科技有限公司",
-        orderDate: "2021.03.12",
-        shippingDate: "2021.03.12",
-        quantity: "7",
-        mCost: "1123.56",
-        profit: "99999",
-        status: "待确认",
-      },
-      {
-        key: "6",
-        orderNumber: "20210317-DT001",
-        companyName: "John Brown",
-        clientName: "北京擎科生物科技有限公司",
-        orderDate: "2021.03.12",
-        shippingDate: "2021.03.12",
-        quantity: "7",
-        mCost: "1123.56",
-        profit: "99999",
-        status: "待确认",
-      },
-      {
-        key: "7",
-        orderNumber: "20210317-DT001",
-        companyName: "John Brown",
-        clientName: "北京擎科生物科技有限公司",
-        orderDate: "2021.03.12",
-        shippingDate: "2021.03.12",
-        quantity: "7",
-        mCost: "1123.56",
-        profit: "99999",
-        status: "待确认",
-      },
-      {
-        key: "8",
-        orderNumber: "20210317-DT001",
-        companyName: "John Brown",
-        clientName: "北京擎科生物科技有限公司",
-        orderDate: "2021.03.12",
-        shippingDate: "2021.03.12",
-        quantity: "7",
-        mCost: "1123.56",
-        profit: "99999",
-        status: "待确认",
-      },
-      {
-        key: "9",
-        orderNumber: "20210317-DT001",
-        companyName: "John Brown",
-        clientName: "北京擎科生物科技有限公司",
-        orderDate: "2021.03.12",
-        shippingDate: "2021.03.12",
-        quantity: "7",
-        mCost: "1123.56",
-        profit: "99999",
-        status: "待确认",
-      },
-      {
-        key: "10",
-        orderNumber: "20210317-DT001",
-        companyName: "John Brown",
-        clientName: "北京擎科生物科技有限公司",
-        orderDate: "2021.03.12",
-        shippingDate: "2021.03.12",
-        quantity: "7",
-        mCost: "1123.56",
-        profit: "99999",
-        status: "待确认",
-      },
     ],
   },
+  navBarTitle: "订单信息",
 };
 
 const product = {
@@ -660,16 +552,14 @@ const product = {
         title: "操作",
         key: "action",
         render: () => (
-          //   <Space size="middle">
-          <div>
+          <Space size="middle">
             <a href="/" alt="none">
               详情
             </a>
             <a href="/" alt="none">
               更多
             </a>
-          </div>
-          //   </Space>
+          </Space>
         ),
       },
     ],
@@ -688,120 +578,9 @@ const product = {
         status: "正常",
         inventory: "22",
       },
-      {
-        key: "2",
-        productPic: "Pic",
-        productNumber: "FDS241",
-        productName: "手提便携袋",
-        category: "长条",
-        color: "黑色",
-        brand: "Nike",
-        mCost: "50",
-        price: "199",
-        profitMargin: "25%",
-        status: "正常",
-        inventory: "22",
-      },
-      {
-        key: "3",
-        productPic: "Pic",
-        productNumber: "FDS241",
-        productName: "手提便携袋",
-        category: "长条",
-        color: "黑色",
-        brand: "Nike",
-        mCost: "50",
-        price: "199",
-        profitMargin: "25%",
-        status: "正常",
-        inventory: "22",
-      },
-      {
-        key: "4",
-        productPic: "Pic",
-        productNumber: "FDS241",
-        productName: "手提便携袋",
-        category: "长条",
-        color: "黑色",
-        brand: "Nike",
-        mCost: "50",
-        price: "199",
-        profitMargin: "25%",
-        status: "正常",
-        inventory: "22",
-      },
-      {
-        key: "5",
-        productPic: "Pic",
-        productNumber: "FDS241",
-        productName: "手提便携袋",
-        category: "长条",
-        color: "黑色",
-        brand: "Nike",
-        mCost: "50",
-        price: "199",
-        profitMargin: "25%",
-        status: "正常",
-        inventory: "22",
-      },
-      {
-        key: "6",
-        productPic: "Pic",
-        productNumber: "FDS241",
-        productName: "手提便携袋",
-        category: "长条",
-        color: "黑色",
-        brand: "Nike",
-        mCost: "50",
-        price: "199",
-        profitMargin: "25%",
-        status: "正常",
-        inventory: "22",
-      },
-      {
-        key: "7",
-        productPic: "Pic",
-        productNumber: "FDS241",
-        productName: "手提便携袋",
-        category: "长条",
-        color: "黑色",
-        brand: "Nike",
-        mCost: "50",
-        price: "199",
-        profitMargin: "25%",
-        status: "正常",
-        inventory: "22",
-      },
-      {
-        key: "8",
-        productPic: "Pic",
-        productNumber: "FDS241",
-        productName: "手提便携袋",
-        category: "长条",
-        color: "黑色",
-        brand: "Nike",
-        mCost: "50",
-        price: "199",
-        profitMargin: "25%",
-        status: "正常",
-        inventory: "22",
-      },
-      {
-        key: "9",
-        productPic: "Pic",
-        productNumber: "FDS241",
-        productName: "手提便携袋",
-        category: "长条",
-        color: "黑色",
-        brand: "Nike",
-        mCost: "50",
-        price: "199",
-        profitMargin: "25%",
-        status: "正常",
-        inventory: "22",
-      },
     ],
   },
+  navBarTitle: "产品详情",
 };
 
 const inventory = {
@@ -968,16 +747,14 @@ const inventory = {
         title: "操作",
         key: "action",
         render: () => (
-          //   <Space size="middle">
-          <div>
+          <Space size="middle">
             <a href="/" alt="none">
               详情
             </a>
             <a href="/" alt="none">
               更多
             </a>
-          </div>
-          //   </Space>
+          </Space>
         ),
       },
     ],
@@ -994,69 +771,9 @@ const inventory = {
         unit: "个",
         inventory: "2999",
       },
-      {
-        key: "2",
-        protoPic: "Pic",
-        materialNum: "TDR001",
-        materialName: "5号拉链头",
-        category: "拉链头",
-        color: "黑色",
-        supplier: "深圳深达拉链有限公司",
-        price: "2.50",
-        unit: "个",
-        inventory: "2999",
-      },
-      {
-        key: "3",
-        protoPic: "Pic",
-        materialNum: "TDR001",
-        materialName: "5号拉链头",
-        category: "拉链头",
-        color: "黑色",
-        supplier: "深圳深达拉链有限公司",
-        price: "2.50",
-        unit: "个",
-        inventory: "2999",
-      },
-
-      {
-        key: "4",
-        protoPic: "Pic",
-        materialNum: "TDR001",
-        materialName: "5号拉链头",
-        category: "拉链头",
-        color: "黑色",
-        supplier: "深圳深达拉链有限公司",
-        price: "2.50",
-        unit: "个",
-        inventory: "2999",
-      },
-      {
-        key: "5",
-        protoPic: "Pic",
-        materialNum: "TDR001",
-        materialName: "5号拉链头",
-        category: "拉链头",
-        color: "黑色",
-        supplier: "深圳深达拉链有限公司",
-        price: "2.50",
-        unit: "个",
-        inventory: "2999",
-      },
-      {
-        key: "6",
-        protoPic: "Pic",
-        materialNum: "TDR001",
-        materialName: "5号拉链头",
-        category: "拉链头",
-        color: "黑色",
-        supplier: "深圳深达拉链有限公司",
-        price: "2.50",
-        unit: "个",
-        inventory: "2999",
-      },
     ],
   },
+  navBarTitle: "库存管理",
 };
 
 const user = {
@@ -1199,7 +916,6 @@ const user = {
       },
     ],
   },
-
   tableData: {
     columns: [
       {
@@ -1246,16 +962,14 @@ const user = {
         title: "操作",
         key: "action",
         render: () => (
-          //   <Space size="middle">
-          <div>
-            <a href="/" alt="none">
+          <Space size="middle">
+            <a href="#" alt="none">
               详情
             </a>
-            <a href="/" alt="none">
+            <a href="#" alt="none">
               更多
             </a>
-          </div>
-          //   </Space>
+          </Space>
         ),
       },
     ],
@@ -1328,6 +1042,7 @@ const user = {
       },
     ],
   },
+  navBarTitle: "用户管理",
 };
 
 const procurement = {
@@ -1427,16 +1142,14 @@ const procurement = {
         title: "操作",
         key: "action",
         render: () => (
-          //   <Space size="middle">
-          <div>
-            <a href="/" alt="none">
+          <Space size="middle">
+            <a href="#" alt="none">
               详情
             </a>
-            <a href="/" alt="none">
+            <a href="#" alt="none">
               更多
             </a>
-          </div>
-          //   </Space>
+          </Space>
         ),
       },
     ],
@@ -1453,5 +1166,6 @@ const procurement = {
       },
     ],
   },
+  navBarTitle: "采购管理",
 };
 export { client, order, product, inventory, user, procurement };
