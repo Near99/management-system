@@ -30,7 +30,7 @@ const DrawerForm = ({ visible, onClose, drawerFormInfo }) => {
               label={item.label}
               rules={[{ required: item.required }]}
             >
-              <Select placeholder="Please select an owner">{options}</Select>
+              <Select placeholder="">{options}</Select>
             </Form.Item>
           </Col>
         </Row>
@@ -46,7 +46,7 @@ const DrawerForm = ({ visible, onClose, drawerFormInfo }) => {
               label={item.label}
               rules={[{ required: item.required }]}
             >
-              <DatePicker />
+              <DatePicker placeholder="" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -77,7 +77,7 @@ const DrawerForm = ({ visible, onClose, drawerFormInfo }) => {
             label={item.label}
             rules={[{ required: item.required }]}
           >
-            <Input placeholder="Please enter user name" />
+            <Input placeholder="" />
           </Form.Item>
         </Col>
       </Row>

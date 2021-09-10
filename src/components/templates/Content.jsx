@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DrawerForm from "./Drawer";
 import { Link } from "react-router-dom";
 import { Form, Input, Button, Select, Menu, Dropdown, Table, Tabs } from "antd";
+import { DownOutlined, PlusOutlined } from "@ant-design/icons";
 
 const SearchBar = ({ formInfo, dropdownItems }) => {
   const { Option } = Select;
@@ -65,7 +66,11 @@ const SearchBar = ({ formInfo, dropdownItems }) => {
     <Form form={form} layout="inline" name="control-hooks" onFinish={onFinish}>
       {formItems}
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button
+          type="primary"
+          htmlType="submit"
+          style={{ marginRight: "10px" }}
+        >
           搜索
         </Button>
         <Button htmlType="button" onClick={onReset}>
@@ -103,7 +108,7 @@ const ActionBar = ({ buttonInfo, drawerFormInfo }) => {
           删除
         </a>
       </Menu.Item>
-      <Menu.Item disabled>
+      <Menu.Item>
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -123,7 +128,10 @@ const ActionBar = ({ buttonInfo, drawerFormInfo }) => {
         href="/"
         style={{ color: "#000000", marginLeft: 30 }}
       >
-        批量操作
+        批量操作{" "}
+        <span>
+          <DownOutlined />
+        </span>
       </a>
     </Dropdown>
   );
@@ -142,6 +150,9 @@ const ActionBar = ({ buttonInfo, drawerFormInfo }) => {
     if (!index) {
       return (
         <Button key={index} onClick={showDrawer} type="primary">
+          <span>
+            <PlusOutlined style={{ marginRight: "7px" }} />
+          </span>
           {item}
         </Button>
       );
