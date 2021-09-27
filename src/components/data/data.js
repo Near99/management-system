@@ -158,10 +158,11 @@ const client = {
       },
       {
         title: "操作",
+        // dataIndex: "action",
         key: "action",
-        render: (text, record) => (
+        render: (_, record) => (
           <Space size="middle">
-            <a href="#" alt="none" onClick={record.testing}>
+            <a href="/" alt="none" onClick={record.testing}>
               详情
             </a>
             <a href="/" alt="none">
@@ -182,10 +183,6 @@ const client = {
         address: "New York No. 1 Lake Park",
         email: "zgtm@gmail.com",
         contact: "QQ",
-        testing: (e) => {
-          console.log("clicked");
-          console.log(e);
-        },
       },
     ],
   },
@@ -928,10 +925,10 @@ const user = {
         key: "action",
         render: () => (
           <Space size="middle">
-            <a href="#" alt="none">
+            <a href="/" alt="none">
               详情
             </a>
-            <a href="#" alt="none">
+            <a href="/" alt="none">
               更多
             </a>
           </Space>
@@ -1073,10 +1070,10 @@ const procurement = {
         key: "action",
         render: () => (
           <Space size="middle">
-            <a href="#" alt="none">
+            <a href="/" alt="none">
               详情
             </a>
-            <a href="#" alt="none">
+            <a href="/" alt="none">
               更多
             </a>
           </Space>

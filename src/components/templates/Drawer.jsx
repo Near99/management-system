@@ -6,14 +6,13 @@ import {
   Row,
   Input,
   Select,
-  Space,
   DatePicker,
 } from "antd";
 
-const DrawerForm = ({ visible, onClose, drawerFormInfo }) => {
+const DrawerForm = ({ visible, onClose, drawerFormInfo, drawerSubmit }) => {
   const { Option } = Select;
 
-  const formRow = drawerFormInfo.formInfo.map((item, key) => {
+  const formRow = drawerFormInfo.formLabels.map((item, key) => {
     if (item.dropdown) {
       const options = drawerFormInfo[item.name].map((item, key) => {
         return (
@@ -22,6 +21,7 @@ const DrawerForm = ({ visible, onClose, drawerFormInfo }) => {
           </Option>
         );
       });
+
       return (
         <Row gutter={16} key={key}>
           <Col span={17}>
@@ -92,19 +92,15 @@ const DrawerForm = ({ visible, onClose, drawerFormInfo }) => {
         onClose={onClose}
         visible={visible}
         bodyStyle={{ paddingBottom: 80 }}
-        extra={
-          <Space>
-            <Button onClick={onClose}>Cancel</Button>
-            <Button onClick={onClose} type="primary">
-              Submit
-            </Button>
-          </Space>
-        }
       >
-        <Form layout="vertical" hideRequiredMark>
+        <Form layout="vertical" hideRequiredMark onFinish={drawerSubmit}>
           {formRow}
-          <Button style={{ marginRight: "20px" }}>取消</Button>
-          <Button type="primary">确定</Button>
+          <Form.Item>
+            <Button style={{ marginRight: "20px" }}>取消</Button>
+            <Button type="primary" htmlType="submit">
+              确定
+            </Button>
+          </Form.Item>
         </Form>
       </Drawer>
     </>

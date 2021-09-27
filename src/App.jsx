@@ -6,6 +6,7 @@ import ProductInfo from "./components/product/productInfo/ProductInfo.jsx";
 import InventoryInfo from "./components/inventory/inventoryInfo/InventoryInfo.jsx";
 import UserInfo from "./components/system/user/UserInfo.jsx";
 import Procurement from "./components/inventory/procurementManagement/Procurement.jsx";
+import LinkProduct from "./components/order/linkProduct/LinkProduct.jsx";
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
       <Switch>
         <Route path="/client">
           <Main childComponent={<ClientInfo />} />
+        </Route>
+        <Route path="/order/link-product">
+          <Main childComponent={<LinkProduct />} />
         </Route>
         <Route path="/order">
           <Main childComponent={<OrderInfo />} />

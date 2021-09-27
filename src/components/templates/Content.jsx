@@ -96,7 +96,7 @@ const NavTabs = ({ navBarTitle }) => {
   );
 };
 
-const ActionBar = ({ buttonInfo, drawerFormInfo }) => {
+const ActionBar = ({ buttonInfo, drawerFormInfo, drawerSubmit }) => {
   const dropdownMenu = (
     <Menu>
       <Menu.Item>
@@ -172,45 +172,48 @@ const ActionBar = ({ buttonInfo, drawerFormInfo }) => {
         visible={visible}
         onClose={onClose}
         drawerFormInfo={drawerFormInfo}
+        drawerSubmit={drawerSubmit}
       />
     </div>
   );
 };
 
-const ClientInfoDisplay = (props) => {
-  const { columns, data } = props.tableData;
+const ClientInfoDisplay = ({ tableColumns, data }) => {
   return (
     <Table
       rowSelection={{ type: "checkbox" }}
-      columns={columns}
+      columns={tableColumns}
       dataSource={data}
       style={{ marginTop: 30 }}
     />
   );
 };
 
-function Content(props) {
-  const {
-    searchBarFormInfo,
-    searchBarDropdownItems,
-    buttonInfo,
-    drawerFormInfo,
-    tableData,
-    navBarTitle,
-  } = props.data;
-
+function Content({
+  navBarTitle,
+  searchBarProps,
+  drawerProps,
+  tableColumns,
+  data,
+  isActionBar,
+  handleSubmit,
+}) {
   return (
     <>
       <NavTabs navBarTitle={navBarTitle} />
       <SearchBar
-        formInfo={searchBarFormInfo}
-        dropdownItems={searchBarDropdownItems}
+        formInfo={searchBarProps.searchBarFormProps}
+        dropdownItems={searchBarProps.searchBarDropdownItems}
       />
-      {props.actionBar ? (
-        <ActionBar buttonInfo={buttonInfo} drawerFormInfo={drawerFormInfo} />
+      {isActionBar ? (
+        <ActionBar
+          buttonInfo={drawerProps.buttonNames}
+          drawerFormInfo={drawerProps}
+          drawerSubmit={handleSubmit}
+        />
       ) : null}
 
-      <ClientInfoDisplay tableData={tableData} />
+      <ClientInfoDisplay tableColumns={tableColumns} data={data} />
     </>
   );
 }
