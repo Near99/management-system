@@ -93,7 +93,7 @@ const DrawerForm = ({ visible, onClose, drawerFormInfo, drawerSubmit }) => {
         visible={visible}
         bodyStyle={{ paddingBottom: 80 }}
       >
-        <Form layout="vertical" hideRequiredMark onFinish={drawerSubmit}>
+        <Form layout="vertical" onFinish={drawerSubmit}>
           {formRow}
           <Form.Item>
             <Button style={{ marginRight: "20px" }}>取消</Button>

@@ -1,152 +1,20 @@
 import React, { useState } from "react";
 import Content from "../../templates/Content";
-import { Button, Space, Dropdown, Menu, Modal } from "antd";
+import {
+  Button,
+  Space,
+  Dropdown,
+  Menu,
+  Modal,
+  Form,
+  Row,
+  Col,
+  Input,
+  Select,
+  DatePicker,
+} from "antd";
 
 export default function ClientInfo() {
-  const data = [
-    {
-      key: "1",
-      companyName: "北京擎科生物科技有限公司",
-      clientName: "张三",
-      phoneNumber: "12345677232",
-      gender: "男",
-      nationality: "美国",
-      address: "New York No. 1 Lake Park",
-      email: "zgtm@gmail.com",
-      reachedVia: "QQ",
-      bankAccount: "1234567",
-      bankAccountInfo: "中国邮政",
-    },
-    {
-      key: "2",
-      companyName: "南京擎科生物科技有限公司",
-      clientName: "李四",
-      phoneNumber: "12345677232",
-      gender: "男",
-      nationality: "美国",
-      address: "New York No. 1 Lake Park",
-      email: "zgtm@gmail.com",
-      reachedVia: "QQ",
-      bankAccount: "1234567",
-      bankAccountInfo: "中国邮政",
-    },
-    {
-      key: "3",
-      companyName: "东京擎科生物科技有限公司",
-      clientName: "王五",
-      phoneNumber: "12345677232",
-      gender: "男",
-      nationality: "中国",
-      address: "New York No. 1 Lake Park",
-      email: "zgtm@gmail.com",
-      reachedVia: "QQ",
-      bankAccount: "1234567",
-      bankAccountInfo: "中国邮政",
-    },
-    {
-      key: "4",
-      companyName: "长安擎科生物科技有限公司",
-      clientName: "沈六",
-      phoneNumber: "12345677232",
-      gender: "男",
-      nationality: "美国",
-      address: "New York No. 1 Lake Park",
-      email: "zgtm@gmail.com",
-      reachedVia: "QQ",
-      bankAccount: "1234567",
-      bankAccountInfo: "中国邮政",
-    },
-  ];
-
-  const [tableData, setTableData] = useState(data);
-
-  const handleSubmit = (e) => {
-    console.log(e);
-    const newData = e;
-    newData.key = `${tableData.length + 1}`;
-    const newTableData = [...tableData, newData];
-    setTableData(newTableData);
-  };
-
-  const [toggleDetail, setToggleDetail] = useState(false);
-
-  const handleDetailToggle = () => {
-    setToggleDetail(!toggleDetail);
-  };
-
-  const clientDetail = (
-    <Modal
-      title="客户详情"
-      centered
-      visible={toggleDetail}
-      onOk={handleDetailToggle}
-      onCancel={handleDetailToggle}
-    >
-      客户信息
-    </Modal>
-  );
-
-  const DropMenu = ({ record }) => {
-    const handleDelete = () => {
-      const newData = tableData.filter((item) => {
-        return item.key !== record.key;
-      });
-      setTableData(newData);
-    };
-
-    const handleEdit = () => {
-      console.log(record);
-    };
-
-    return (
-      <Menu>
-        <Menu.Item key="1" onClick={handleEdit}>
-          编辑
-        </Menu.Item>
-        <Menu.Item key="2" onClick={handleDelete}>
-          删除
-        </Menu.Item>
-      </Menu>
-    );
-  };
-
-  const navBarTitle = "客户管理";
-
-  const searchBarProps = {
-    searchBarFormProps: [
-      {
-        name: "客户姓名",
-        label: "客户姓名",
-        required: false,
-      },
-      {
-        name: "国籍",
-        label: "国籍",
-        required: false,
-        dropdown: true,
-      },
-    ],
-
-    searchBarDropdownItems: [
-      {
-        optionValue: "us",
-        displayValue: "美国",
-      },
-      {
-        optionValue: "cn",
-        displayValue: "中国",
-      },
-      {
-        optionValue: "uk",
-        displayValue: "英国",
-      },
-      {
-        optionValue: "sg",
-        displayValue: "新加坡",
-      },
-    ],
-  };
-
   const drawerProps = {
     drawerTitle: "新增客户",
 
@@ -225,6 +93,265 @@ export default function ClientInfo() {
       },
       {
         optionValue: "新加坡",
+        displayValue: "新加坡",
+      },
+    ],
+  };
+
+  const data = [
+    {
+      key: "1",
+      companyName: "北京擎科生物科技有限公司",
+      clientName: "张三",
+      phoneNumber: "62345677232",
+      gender: "男",
+      nationality: "中国",
+      address: "北京中关村大厦",
+      email: "cny@gmail.com",
+      reachedVia: "绑架",
+      bankAccount: "1234567",
+      bankAccountInfo: "中国邮政",
+    },
+    {
+      key: "2",
+      companyName: "南京科生有限公司",
+      clientName: "李四",
+      phoneNumber: "72345677232",
+      gender: "男",
+      nationality: "英国",
+      address: "Hyde Park, London",
+      email: "yen@qq.com",
+      reachedVia: "微信",
+      bankAccount: "2456781",
+      bankAccountInfo: "招商银行",
+    },
+    {
+      key: "3",
+      companyName: "东京生物科技有限公司",
+      clientName: "王五",
+      phoneNumber: "92345677232",
+      gender: "男",
+      nationality: "新加坡",
+      address: "Lim Tua Tow rd, Singapore",
+      email: "huj@hotmail.com",
+      reachedVia: "邮件",
+      bankAccount: "3872819",
+      bankAccountInfo: "中国邮政",
+    },
+    {
+      key: "4",
+      companyName: "长安科技有限公司",
+      clientName: "沈六",
+      phoneNumber: "12345677232",
+      gender: "男",
+      nationality: "美国",
+      address: "No. 1 Lake Parkm, New York",
+      email: "usd@163.com",
+      reachedVia: "电话",
+      bankAccount: "457128",
+      bankAccountInfo: "民生银行",
+    },
+  ];
+
+  const [tableData, setTableData] = useState(data);
+
+  const handleSubmit = (e) => {
+    console.log(e);
+    const newData = e;
+    // newData.key = `${tableData.length + 1}`;
+    newData.key = `${Math.floor(Math.random() * 9999)}`;
+    const newTableData = [...tableData, newData];
+    setTableData(newTableData);
+  };
+
+  const [toggleDetail, setToggleDetail] = useState(false);
+
+  const handleDetailToggle = () => {
+    setToggleDetail(!toggleDetail);
+  };
+
+  const clientDetail = (
+    <Modal
+      title="客户详情"
+      centered
+      visible={toggleDetail}
+      onOk={handleDetailToggle}
+      onCancel={handleDetailToggle}
+    >
+      客户信息
+    </Modal>
+  );
+
+  const DropMenu = ({ record }) => {
+    const { Option } = Select;
+
+    const handleDelete = () => {
+      const afterDeletion = tableData.filter((item) => item.key !== record.key);
+      setTableData(afterDeletion);
+    };
+
+    const [toggleEditing, setToggleEditing] = useState(false);
+
+    const handleEditingToggle = () => {
+      // console.log(record);
+      setToggleEditing(!toggleEditing);
+    };
+
+    const formRow = drawerProps.formLabels.map((item, key) => {
+      if (item.dropdown) {
+        const options = drawerProps[item.name].map((item, key) => {
+          return (
+            <Option key={key} value={item.optionValue}>
+              {item.displayValue}
+            </Option>
+          );
+        });
+
+        return (
+          <Row gutter={16} key={key}>
+            <Col span={17}>
+              <Form.Item
+                name={item.name}
+                label={item.label}
+                rules={[{ required: item.required }]}
+                initialValue={record[item.name]}
+              >
+                <Select placeholder="">{options}</Select>
+              </Form.Item>
+            </Col>
+          </Row>
+        );
+      }
+
+      if (item.datePicker) {
+        return (
+          <Row gutter={16} key={key}>
+            <Col span={17}>
+              <Form.Item
+                name={item.name}
+                label={item.label}
+                rules={[{ required: item.required }]}
+              >
+                <DatePicker placeholder="" style={{ width: "100%" }} />
+              </Form.Item>
+            </Col>
+          </Row>
+        );
+      }
+
+      if (item.textArea) {
+        return (
+          <Row gutter={16} key={key}>
+            <Col span={17}>
+              <Form.Item
+                name={item.name}
+                label={item.label}
+                rules={[{ required: item.required }]}
+              >
+                <Input.TextArea />
+              </Form.Item>
+            </Col>
+          </Row>
+        );
+      }
+
+      return (
+        <Row gutter={16} key={key}>
+          <Col span={17}>
+            <Form.Item
+              name={item.name}
+              label={item.label}
+              rules={[{ required: item.required }]}
+              initialValue={record[item.name]}
+            >
+              <Input placeholder="" />
+            </Form.Item>
+          </Col>
+        </Row>
+      );
+    });
+
+    const editingModal = (
+      <Modal
+        title="编辑客户信息"
+        centered
+        width="500px"
+        visible={toggleEditing}
+        onOk={handleEditingToggle}
+        onCancel={handleEditingToggle}
+      >
+        <Form
+          layout="vertical"
+          onFinish={(e) => {
+            const newTableData = tableData;
+            const newData = e;
+            newTableData.forEach((item, index) => {
+              if (item.key === record.key) {
+                newData.key = item.key;
+                newTableData[index] = newData;
+                console.log(newTableData);
+                setTableData(newTableData);
+              }
+            });
+            handleEditingToggle();
+          }}
+        >
+          {formRow}
+          <Form.Item>
+            <Button style={{ marginRight: "20px" }}>取消</Button>
+            <Button type="primary" htmlType="submit">
+              确定
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
+    );
+
+    return (
+      <Menu>
+        <Menu.Item key="1" onClick={handleEditingToggle}>
+          编辑
+        </Menu.Item>
+        <Menu.Item key="2" onClick={handleDelete}>
+          删除
+        </Menu.Item>
+        {editingModal}
+      </Menu>
+    );
+  };
+
+  const navBarTitle = "客户管理";
+
+  const searchBarProps = {
+    searchBarFormProps: [
+      {
+        name: "客户姓名",
+        label: "客户姓名",
+        required: false,
+      },
+      {
+        name: "国籍",
+        label: "国籍",
+        required: false,
+        dropdown: true,
+      },
+    ],
+
+    searchBarDropdownItems: [
+      {
+        optionValue: "us",
+        displayValue: "美国",
+      },
+      {
+        optionValue: "cn",
+        displayValue: "中国",
+      },
+      {
+        optionValue: "uk",
+        displayValue: "英国",
+      },
+      {
+        optionValue: "sg",
         displayValue: "新加坡",
       },
     ],
