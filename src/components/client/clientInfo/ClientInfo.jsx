@@ -183,6 +183,7 @@ export default function ClientInfo() {
   );
 
   const DropMenu = ({ record }) => {
+    console.log("from dropmenu");
     const { Option } = Select;
 
     const handleDelete = () => {
@@ -193,8 +194,20 @@ export default function ClientInfo() {
     const [toggleEditing, setToggleEditing] = useState(false);
 
     const handleEditingToggle = () => {
-      // console.log(record);
       setToggleEditing(!toggleEditing);
+    };
+
+    const handleUpdate = (e) => {
+      const newTableData = tableData.map((item) => {
+        if (item.key === record.key) {
+          const newData = e;
+          newData.key = record.key;
+          return newData;
+        }
+        return item;
+      });
+      setTableData(newTableData);
+      handleEditingToggle();
     };
 
     const formRow = drawerProps.formLabels.map((item, key) => {
@@ -280,22 +293,7 @@ export default function ClientInfo() {
         onOk={handleEditingToggle}
         onCancel={handleEditingToggle}
       >
-        <Form
-          layout="vertical"
-          onFinish={(e) => {
-            const newTableData = tableData;
-            const newData = e;
-            newTableData.forEach((item, index) => {
-              if (item.key === record.key) {
-                newData.key = item.key;
-                newTableData[index] = newData;
-                console.log(newTableData);
-                setTableData(newTableData);
-              }
-            });
-            handleEditingToggle();
-          }}
-        >
+        <Form layout="vertical" onFinish={handleUpdate}>
           {formRow}
           <Form.Item>
             <Button style={{ marginRight: "20px" }}>取消</Button>
@@ -411,6 +409,8 @@ export default function ClientInfo() {
       ),
     },
   ];
+
+  console.log("from main components");
 
   return (
     <div>
