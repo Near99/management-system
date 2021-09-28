@@ -155,7 +155,7 @@ export default function ClientInfo() {
 
   const [tableData, setTableData] = useState(data);
 
-  const handleSubmit = (e) => {
+  const handleAddNewData = (e) => {
     console.log(e);
     const newData = e;
     // newData.key = `${tableData.length + 1}`;
@@ -421,7 +421,7 @@ export default function ClientInfo() {
         tableColumns={tableColumns}
         data={tableData}
         isActionBar={true}
-        handleSubmit={handleSubmit}
+        handleSubmit={handleAddNewData}
       />
       {clientDetail}
     </div>
