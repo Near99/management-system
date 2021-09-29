@@ -182,7 +182,8 @@ export default function ClientInfo() {
     if (clientName && nationality) {
       const result = tableData.filter(
         (item) =>
-          item.nationality === nationality && item.clientName === clientName
+          item.nationality === nationality &&
+          item.clientName.includes(clientName)
       );
       setFilteredClientInfo(result);
       setSearchOn(true);
@@ -196,7 +197,9 @@ export default function ClientInfo() {
       setSearchOn(true);
     }
     if (!nationality) {
-      const result = tableData.filter((item) => item.clientName === clientName);
+      const result = tableData.filter((item) =>
+        item.clientName.includes(clientName)
+      );
       setFilteredClientInfo(result);
       setSearchOn(true);
     }
