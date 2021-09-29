@@ -155,9 +155,8 @@ export default function ClientInfo() {
 
   const [tableData, setTableData] = useState(data);
 
-  const handleAddNewData = (e) => {
-    console.log(e);
-    const newData = e;
+  const handleAddNewData = (value) => {
+    const newData = value;
     // newData.key = `${tableData.length + 1}`;
     newData.key = `${Math.floor(Math.random() * 9999)}`;
     const newTableData = [...tableData, newData];
@@ -170,20 +169,47 @@ export default function ClientInfo() {
     setToggleDetail(!toggleDetail);
   };
 
-  const clientDetail = (
-    <Modal
-      title="客户详情"
-      centered
-      visible={toggleDetail}
-      onOk={handleDetailToggle}
-      onCancel={handleDetailToggle}
-    >
-      客户信息
-    </Modal>
-  );
+  const [filteredClientInfo, setFilteredClientInfo] = useState([]);
+
+  const [searchOn, setSearchOn] = useState(false);
+
+  const handleSearching = (value) => {
+    const { clientName, nationality } = value;
+    if (!clientName && !nationality) {
+      setSearchOn(false);
+      return;
+    }
+    if (clientName && nationality) {
+      const result = tableData.filter(
+        (item) =>
+          item.nationality === nationality && item.clientName === clientName
+      );
+      setFilteredClientInfo(result);
+      setSearchOn(true);
+      return;
+    }
+    if (!clientName) {
+      const result = tableData.filter(
+        (item) => item.nationality === nationality
+      );
+      setFilteredClientInfo(result);
+      setSearchOn(true);
+    }
+    if (!nationality) {
+      const result = tableData.filter((item) => item.clientName === clientName);
+      setFilteredClientInfo(result);
+      setSearchOn(true);
+    }
+  };
+
+  const [form] = Form.useForm();
+
+  const handleReset = () => {
+    form.resetFields();
+    setSearchOn(false);
+  };
 
   const DropMenu = ({ record }) => {
-    console.log("from dropmenu");
     const { Option } = Select;
 
     const handleDelete = () => {
@@ -323,12 +349,12 @@ export default function ClientInfo() {
   const searchBarProps = {
     searchBarFormProps: [
       {
-        name: "客户姓名",
+        name: "clientName",
         label: "客户姓名",
         required: false,
       },
       {
-        name: "国籍",
+        name: "nationality",
         label: "国籍",
         required: false,
         dropdown: true,
@@ -337,19 +363,19 @@ export default function ClientInfo() {
 
     searchBarDropdownItems: [
       {
-        optionValue: "us",
+        optionValue: "美国",
         displayValue: "美国",
       },
       {
-        optionValue: "cn",
+        optionValue: "中国",
         displayValue: "中国",
       },
       {
-        optionValue: "uk",
+        optionValue: "英国",
         displayValue: "英国",
       },
       {
-        optionValue: "sg",
+        optionValue: "新加坡",
         displayValue: "新加坡",
       },
     ],
@@ -410,20 +436,32 @@ export default function ClientInfo() {
     },
   ];
 
-  console.log("from main components");
+  const clientDetail = (
+    <Modal
+      title="客户详情"
+      centered
+      visible={toggleDetail}
+      onOk={handleDetailToggle}
+      onCancel={handleDetailToggle}
+    >
+      客户信息
+    </Modal>
+  );
 
   return (
-    <div>
+    <>
       <Content
         navBarTitle={navBarTitle}
         searchBarProps={searchBarProps}
         drawerProps={drawerProps}
         tableColumns={tableColumns}
-        data={tableData}
+        data={searchOn ? filteredClientInfo : tableData}
         isActionBar={true}
         handleSubmit={handleAddNewData}
+        handleSearch={handleSearching}
+        handleReset={handleReset}
       />
       {clientDetail}
-    </div>
+    </>
   );
 }

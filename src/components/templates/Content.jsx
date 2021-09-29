@@ -4,17 +4,9 @@ import { Link } from "react-router-dom";
 import { Form, Input, Button, Select, Menu, Dropdown, Table, Tabs } from "antd";
 import { DownOutlined, PlusOutlined } from "@ant-design/icons";
 
-const SearchBar = ({ formInfo, dropdownItems }) => {
+const SearchBar = ({ formInfo, dropdownItems, handleSearch, handleReset }) => {
   const { Option } = Select;
   const [form] = Form.useForm();
-
-  const onFinish = (values) => {
-    console.log(values);
-  };
-
-  const onReset = () => {
-    form.resetFields();
-  };
 
   const dropdown = dropdownItems.map((item, index) => {
     return (
@@ -52,10 +44,7 @@ const SearchBar = ({ formInfo, dropdownItems }) => {
           },
         ]}
       >
-        <Select
-          placeholder="Select a option and change input text above"
-          allowClear
-        >
+        <Select placeholder="" style={{ width: "220px" }} allowClear>
           {dropdown}
         </Select>
       </Form.Item>
@@ -63,7 +52,12 @@ const SearchBar = ({ formInfo, dropdownItems }) => {
   });
 
   return (
-    <Form form={form} layout="inline" name="control-hooks" onFinish={onFinish}>
+    <Form
+      form={form}
+      layout="inline"
+      name="control-hooks"
+      onFinish={handleSearch}
+    >
       {formItems}
       <Form.Item>
         <Button
@@ -73,7 +67,7 @@ const SearchBar = ({ formInfo, dropdownItems }) => {
         >
           搜索
         </Button>
-        <Button htmlType="button" onClick={onReset}>
+        <Button htmlType="button" onClick={handleReset}>
           重置
         </Button>
       </Form.Item>
@@ -197,6 +191,8 @@ function Content({
   data,
   isActionBar,
   handleSubmit,
+  handleSearch,
+  handleReset,
 }) {
   return (
     <>
@@ -204,6 +200,8 @@ function Content({
       <SearchBar
         formInfo={searchBarProps.searchBarFormProps}
         dropdownItems={searchBarProps.searchBarDropdownItems}
+        handleSearch={handleSearch}
+        handleReset={handleReset}
       />
       {isActionBar ? (
         <ActionBar
