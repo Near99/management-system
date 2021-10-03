@@ -1,5 +1,4 @@
 import React from "react";
-import { product } from "../../data/data";
 import { Button, Table, Tabs, Descriptions } from "antd";
 import { Link } from "react-router-dom";
 
@@ -57,8 +56,8 @@ const OrderDetail = () => {
       </Button>
       <Button>删除</Button>
       <Table
-        columns={product.tableData.columns}
-        dataSource={product.tableData.data}
+        // columns={product.tableData.columns}
+        // dataSource={product.tableData.data}
         style={{ marginTop: "30px" }}
       />
     </div>

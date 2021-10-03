@@ -11,7 +11,6 @@ import {
   Form,
   Input,
 } from "antd";
-import { product } from "../../data/data";
 import Content from "../../templates/Content";
 
 export default function OrderInfo() {
@@ -59,8 +58,8 @@ export default function OrderInfo() {
         </Descriptions.Item>
       </Descriptions>
       <Table
-        columns={product.tableData.columns}
-        dataSource={product.tableData.data}
+        // columns={product.tableData.columns}
+        // dataSource={product.tableData.data}
         style={{ marginTop: "30px" }}
       />
     </Modal>
@@ -326,6 +325,8 @@ export default function OrderInfo() {
         data={data}
         isActionBar={true}
         handleSubmit={handleSubmit}
+        handleSearch={handleSubmit}
+        handleReset={handleSubmit}
       />
       {orderDetail}
       {costSetting}

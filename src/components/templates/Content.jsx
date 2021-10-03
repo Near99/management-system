@@ -4,9 +4,14 @@ import { Link } from "react-router-dom";
 import { Form, Input, Button, Select, Menu, Dropdown, Table, Tabs } from "antd";
 import { DownOutlined, PlusOutlined } from "@ant-design/icons";
 
-const SearchBar = ({ formInfo, dropdownItems, handleSearch, handleReset }) => {
+const SearchBar = ({
+  formInfo,
+  dropdownItems,
+  handleSearch,
+  handleReset,
+  formInstance,
+}) => {
   const { Option } = Select;
-  const [form] = Form.useForm();
 
   const dropdown = dropdownItems.map((item, index) => {
     return (
@@ -53,7 +58,7 @@ const SearchBar = ({ formInfo, dropdownItems, handleSearch, handleReset }) => {
 
   return (
     <Form
-      form={form}
+      form={formInstance}
       layout="inline"
       name="control-hooks"
       onFinish={handleSearch}
@@ -90,7 +95,12 @@ const NavTabs = ({ navBarTitle }) => {
   );
 };
 
-const ActionBar = ({ buttonInfo, drawerFormInfo, drawerSubmit }) => {
+const ActionBar = ({
+  buttonInfo,
+  drawerFormInfo,
+  drawerSubmit,
+  formInstance,
+}) => {
   const dropdownMenu = (
     <Menu>
       <Menu.Item>
@@ -167,6 +177,7 @@ const ActionBar = ({ buttonInfo, drawerFormInfo, drawerSubmit }) => {
         onClose={onClose}
         drawerFormInfo={drawerFormInfo}
         drawerSubmit={drawerSubmit}
+        formInstance={formInstance}
       />
     </div>
   );
@@ -193,6 +204,7 @@ function Content({
   handleSubmit,
   handleSearch,
   handleReset,
+  formInstance,
 }) {
   return (
     <>
@@ -202,6 +214,7 @@ function Content({
         dropdownItems={searchBarProps.searchBarDropdownItems}
         handleSearch={handleSearch}
         handleReset={handleReset}
+        formInstance={formInstance}
       />
       {isActionBar ? (
         <ActionBar

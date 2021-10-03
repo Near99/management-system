@@ -153,13 +153,15 @@ export default function ClientInfo() {
     },
   ];
 
+  const [form] = Form.useForm();
+
   const [tableData, setTableData] = useState(data);
 
   const handleAddNewData = (value) => {
     const newData = value;
-    // newData.key = `${tableData.length + 1}`;
     newData.key = `${Math.floor(Math.random() * 9999)}`;
     const newTableData = [...tableData, newData];
+    form.resetFields();
     setTableData(newTableData);
   };
 
@@ -204,8 +206,6 @@ export default function ClientInfo() {
       setSearchOn(true);
     }
   };
-
-  const [form] = Form.useForm();
 
   const handleReset = () => {
     form.resetFields();
@@ -439,17 +439,19 @@ export default function ClientInfo() {
     },
   ];
 
-  const clientDetail = (
-    <Modal
-      title="客户详情"
-      centered
-      visible={toggleDetail}
-      onOk={handleDetailToggle}
-      onCancel={handleDetailToggle}
-    >
-      客户信息
-    </Modal>
-  );
+  const ClientDetail = () => {
+    return (
+      <Modal
+        title="客户详情"
+        centered
+        visible={toggleDetail}
+        onOk={handleDetailToggle}
+        onCancel={handleDetailToggle}
+      >
+        客户信息
+      </Modal>
+    );
+  };
 
   return (
     <>
@@ -463,8 +465,9 @@ export default function ClientInfo() {
         handleSubmit={handleAddNewData}
         handleSearch={handleSearching}
         handleReset={handleReset}
+        formInstance={form}
       />
-      {clientDetail}
+      <ClientDetail />
     </>
   );
 }

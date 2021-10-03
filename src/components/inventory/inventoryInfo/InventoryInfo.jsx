@@ -206,6 +206,8 @@ export default function InventoryInfo() {
       data={data}
       isActionBar={true}
       handleSubmit={handleAddNewData}
+      handleSearch={handleAddNewData}
+      handleReset={handleAddNewData}
     />
   );
 }
