@@ -1,31 +1,24 @@
 import React from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import PropTypes from "prop-types";
-
-// async function loginUser(credentials) {
-//   return fetch("http://localhost:8080/login", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(credentials),
-//   }).then((data) => data.json());
-// }
-
-const userInfo = [
-  { username: "admin", password: "123456" },
-  { username: "test", password: "123456" },
-];
+import axios from "axios";
 
 function Login({ setToken }) {
-  const onFinish = async (values) => {
-    const { username, password } = values;
-    userInfo.forEach((user) => {
-      if (username === user.username && password === user.password) {
-        setToken(true);
-      }
-    });
+  const onFinish = (values) => {
+    axios({
+      method: "post",
+      url: "/api/login",
+      data: values,
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.data.code === 200) {
+          setToken(res.data.data.token);
+        } else {
+          message.error(res.data.errMsg);
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -38,7 +31,7 @@ function Login({ setToken }) {
       onFinish={onFinish}
     >
       <Form.Item
-        name="username"
+        name="email"
         rules={[
           {
             required: true,
@@ -77,7 +70,3 @@ function Login({ setToken }) {
 }
 
 export default Login;
-
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};

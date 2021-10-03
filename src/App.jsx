@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Main from "./main.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ClientInfo from "./components/client/clientInfo/ClientInfo";
@@ -9,9 +8,10 @@ import UserInfo from "./components/system/user/UserInfo.jsx";
 import Procurement from "./components/inventory/procurementManagement/Procurement.jsx";
 import LinkProduct from "./components/order/linkProduct/LinkProduct.jsx";
 import Login from "./components/login/Login.jsx";
+import useToken from "./components/hooks/useToken.js";
 
 function App() {
-  const [token, setToken] = useState();
+  const { token, setToken } = useToken();
 
   if (!token) {
     return <Login setToken={setToken} />;
