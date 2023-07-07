@@ -138,19 +138,6 @@ export default function ClientInfo() {
       bankAccount: "3872819",
       bankAccountInfo: "中国邮政",
     },
-    {
-      key: "4",
-      companyName: "长安科技有限公司",
-      clientName: "沈六",
-      phoneNumber: "12345677232",
-      gender: "男",
-      nationality: "美国",
-      address: "No. 1 Lake Parkm, New York",
-      email: "usd@163.com",
-      reachedVia: "电话",
-      bankAccount: "457128",
-      bankAccountInfo: "民生银行",
-    },
   ];
 
   const [form] = Form.useForm();
